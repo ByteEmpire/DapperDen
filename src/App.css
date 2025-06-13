@@ -1,0 +1,121 @@
+/* Set the body and root element to fill the entire screen */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto; /* ✅ fix for scroll */
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* ✅ enables smooth scroll */
+}
+/* Updated root element to remove white borders */
+#root {
+  width: 100%; /* Ensure full width */
+  height: auto; /* ✅ fix for scroll */
+  padding: 0; /* Remove padding to eliminate borders */
+  text-align: center;
+  background-color: #f8f8f8; /* Add a background color for the full screen */
+}
+
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  cursor: zoom-out;
+  padding: 0; /* Remove any unwanted padding */
+}
+
+.zoomed-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 1rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+}
+
+/* Gradient Animation for Background */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 10s ease infinite;
+  background-size: 400% 400%;
+}
+
+/* 3D Hover Effect on Input Fields */
+input,
+button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Typing Effect on Welcome Text */
+.typing-effect {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  animation: typing 2s steps(15) 1s forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 14ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Typing Animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Typing Effect Class */
+.typing-effect {
+  animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Blinking Caret Animation */
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+/* Additional styles for other components */
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
